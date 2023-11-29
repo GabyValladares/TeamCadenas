@@ -103,9 +103,7 @@ this.espacios(palabra);
     int op = 0;  
     for (int i = 0; i < palabra.length(); i++) {
         if (palabra.charAt(i) == ' ') {  
-            op++;
-            
-            
+            op++;            
         } 
       
     }
