@@ -4,6 +4,12 @@
  */
 package clases;
 
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
+import javax.swing.JLayeredPane;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+
 
 /**
  *
@@ -16,6 +22,12 @@ public class Validacion_cadena extends javax.swing.JFrame {
      */
     public Validacion_cadena() {
         initComponents();
+        ((JPanel)getContentPane()).setOpaque(false);
+        ImageIcon uno=new ImageIcon(this.getClass().getResource("/imagen/fondo.jpg"));
+        JLabel fondo= new JLabel();
+        fondo.setIcon(uno);
+        getLayeredPane().add(fondo,JLayeredPane.FRAME_CONTENT_LAYER);
+        fondo.setBounds(0,0,uno.getIconWidth(),uno.getIconHeight());
     }
 
 
@@ -32,15 +44,15 @@ public class Validacion_cadena extends javax.swing.JFrame {
         lbltexto = new javax.swing.JLabel();
         txtstring = new javax.swing.JTextField();
         btnvalidar = new javax.swing.JButton();
-        lblespacio = new javax.swing.JLabel();
-        txtnum = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         VALIDACION.setFont(new java.awt.Font("Segoe UI", 3, 12)); // NOI18N
+        VALIDACION.setForeground(new java.awt.Color(153, 153, 255));
         VALIDACION.setText("VALIDACION");
 
         lbltexto.setFont(new java.awt.Font("Segoe UI", 3, 12)); // NOI18N
+        lbltexto.setForeground(new java.awt.Color(153, 153, 255));
         lbltexto.setText("Ingrese texto:");
 
         btnvalidar.setFont(new java.awt.Font("Segoe UI", 3, 12)); // NOI18N
@@ -51,32 +63,21 @@ public class Validacion_cadena extends javax.swing.JFrame {
             }
         });
 
-        lblespacio.setFont(new java.awt.Font("Segoe UI", 3, 12)); // NOI18N
-        lblespacio.setText("numero de espacios:");
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(70, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(lbltexto, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
                 .addComponent(txtstring, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(75, 75, 75))
             .addGroup(layout.createSequentialGroup()
+                .addGap(129, 129, 129)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(129, 129, 129)
-                        .addComponent(VALIDACION, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(37, 37, 37)
-                        .addComponent(lblespacio, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtnum, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(143, 143, 143)
-                        .addComponent(btnvalidar)))
+                    .addComponent(VALIDACION, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnvalidar))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -88,13 +89,9 @@ public class Validacion_cadena extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbltexto)
                     .addComponent(txtstring, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblespacio)
-                    .addComponent(txtnum, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(30, 30, 30)
+                .addGap(45, 45, 45)
                 .addComponent(btnvalidar)
-                .addContainerGap(94, Short.MAX_VALUE))
+                .addContainerGap(66, Short.MAX_VALUE))
         );
 
         pack();
@@ -102,14 +99,14 @@ public class Validacion_cadena extends javax.swing.JFrame {
 
     private void btnvalidarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnvalidarActionPerformed
        String cadena =txtstring.getText();
-     comprobarEspacios(cadena);
+     this.comprobarEspacios(cadena);
     }//GEN-LAST:event_btnvalidarActionPerformed
  
     public void comprobarEspacios(String cadena) {
     int numeroEspacios = cadena.split("\\s").length - 1;
-    txtnum.setText("La cadena tiene " + numeroEspacios + " espacio.");
+        JOptionPane.showMessageDialog(this, "La cadena tiene " + numeroEspacios + " espacio(s).");
 }
-    /**
+    /** 
      * @param args the command line arguments
      */
     public static void main(String args[]) {
@@ -147,9 +144,7 @@ public class Validacion_cadena extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel VALIDACION;
     private javax.swing.JButton btnvalidar;
-    private javax.swing.JLabel lblespacio;
     private javax.swing.JLabel lbltexto;
-    private javax.swing.JTextField txtnum;
     private javax.swing.JTextField txtstring;
     // End of variables declaration//GEN-END:variables
 }
