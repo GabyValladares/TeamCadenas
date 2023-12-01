@@ -99,19 +99,16 @@ public class ValidacionCadena extends javax.swing.JFrame {
         // TODO add your handling code here:
         String cadena=txtaCadena.getText();
         this.comprobarEspacioBlanco(cadena);
-        
-        
-        
+           
     }//GEN-LAST:event_btt_validarActionPerformed
 
- public void comprobarEspacioBlanco (String Cadena){
+     public void comprobarEspacioBlanco (String Cadena){
      String[] contador= Cadena.split("\\s+");
      
      int contadorEspacios= contador.length -1;
      JOptionPane.showMessageDialog(null,"La cadena tiene "+contadorEspacios+" espacios en blanco");
-     
+   
      }
- 
  
     
     /**
