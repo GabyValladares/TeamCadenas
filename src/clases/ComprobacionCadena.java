@@ -48,6 +48,12 @@ public class ComprobacionCadena extends javax.swing.JFrame {
         lblTema.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lblTema.setText("VALIDACION DE CADENAS");
 
+        txtCadena.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtCadenaActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout panel1Layout = new javax.swing.GroupLayout(panel1);
         panel1.setLayout(panel1Layout);
         panel1Layout.setHorizontalGroup(
@@ -91,19 +97,25 @@ public class ComprobacionCadena extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+String cadena = txtCadena.getText();
+int contadorEspacios = 0;
 
-                  String Cadena=txtCadena.getText();
-        this.Comprobar(Cadena);
+for (int i = 0; i < cadena.length(); i++) {
+    if (cadena.charAt(i) == ' ') {
+        contadorEspacios++;
+    }
+}
+
+JOptionPane.showMessageDialog(null, "Hay " + contadorEspacios + " espacios en blanco");
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    
-    public void Comprobar (String Cadena){
-        String[] contador= Cadena.split("\\s+");
-     
-     int contadorEspacios= contador.length -1;
-     JOptionPane.showMessageDialog(null,"Hay "+contadorEspacios+" espacios en blanco");
+    private void txtCadenaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCadenaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtCadenaActionPerformed
 
-    }
+    
+
     
     /**
      * @param args the command line arguments
