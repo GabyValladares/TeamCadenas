@@ -151,7 +151,16 @@ public class DatosPersonales extends javax.swing.JFrame {
         return matcher.matches();
     }
     
-    
+    public static boolean validarClave(String clave){
+        String rango = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=!])(?=\\S+$).{8,}$";
+
+        // Compilar la expresión regular
+        Pattern pattern = Pattern.compile(rango);
+
+        // Crear un objeto Matcher
+        Matcher matcher = pattern.matcher(clave);
+        return matcher.matches();
+    }
 
     private void btnVerificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerificarActionPerformed
         String correo=txtCorreo.getText();
@@ -184,6 +193,13 @@ public class DatosPersonales extends javax.swing.JFrame {
             txtCelular.setForeground(Color.red);
         }
         
+        if(validarClave(clave)){
+            JOptionPane.showMessageDialog(rootPane, "Clave verificada");
+            txtClave.setForeground(Color.black);
+        }else{
+            JOptionPane.showMessageDialog(rootPane, "Clave inválido");
+            txtClave.setForeground(Color.red);
+        }
     }//GEN-LAST:event_btnVerificarActionPerformed
 
     /**
